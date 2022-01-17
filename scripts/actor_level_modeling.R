@@ -131,7 +131,7 @@ plot_4_interactions(m_sat)
 
 ggsave(here("viz/sat_interactions_uni.png"), width = 32, height = 18, units = "cm")
 
-# imputing missing achievement data with mice ---------
+# imputing missing achievement data with mice (takes a while) ---------
 
 modeling_imp_df <- modeling_df %>% 
   filter(!is.na(ego_inclusion)) %>% 
@@ -339,18 +339,6 @@ m_sat_imp_mice %>%
 ggsave(here("viz/posterior_beta.png"),
        width = 25, height = 12, units = "cm", bg = "white")
 
-# m_sat_imp_mice %>%
-#   spread_draws(b_Intercept[1:3]) %>% 
-#   ggplot(aes(y = factor(`1:3`), x = b_Intercept)) +
-#   stat_halfeye(.width = c(0.66, 0.88), point_interval = median_hdi) + theme_minimal() 
-
-# m_sat_imp_mice %>%
-#   gather_draws(`r_case.*`, regex = TRUE) %>% 
-#   ggplot(aes(y = factor(.variable), x = .value)) +
-#   stat_halfeye(.width = c(0.66, 0.88), point_interval = median_hdi) + 
-#   geom_vline(xintercept = 0) +
-#   theme_gray()
-
 # varying intercept plots
 
 # per case intercepts
@@ -434,18 +422,6 @@ plotting_df_case_issue %>%
 
 ggsave(here("viz/posterior_var_intercepts_caseissue.png"),
        width = 25, height = 12, units = "cm", bg = "white")
-
-# # per case varying effects for bet log
-# m_sat_imp_mice %>%
-#   gather_draws(`r_case\\[.*`, regex = TRUE) %>% 
-#   filter(grepl("bet\\_log",.variable)) %>% 
-#   mutate(var_shortened = gsub("r_case|\\[|\\]|,bet\\_log","",.variable)) %>%
-#   mutate(var_shortened = gsub("\\."," ",var_shortened)) %>% 
-#   filter(!grepl(",",var_shortened)) %>% 
-#   ggplot(aes(y = factor(var_shortened), x = .value)) +
-#   stat_halfeye(.width = c(0.66, 0.88), point_interval = median_hdi) + 
-#   geom_vline(xintercept = 0) +
-#   theme_gray()
 
 
 # per case varying effects for all
