@@ -1,4 +1,4 @@
-# conditional effects in schön --------
+# conditional effects --------
 
 plot_cond_effects <- function(main_var, cond_var, model_fit, cond_labels, 
                               resp = NULL, log_x = TRUE){
