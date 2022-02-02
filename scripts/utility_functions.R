@@ -1,5 +1,3 @@
-
-# https://stats.stackexchange.com/questions/281162/scale-a-number-between-a-range
 normalize_to_range <- function(input, 
                                from, to,
                                maximum = NULL, 
@@ -13,14 +11,6 @@ normalize_to_range <- function(input,
   normalized <- ((input - minimum) / (maximum - minimum)) * (to - from) + from
   normalized
 }
-
-# normalize_to_range(c(2,3,4),
-#                    0, 1)
-# normalize_to_range(c(2,3,4),
-#                    1, 100)
-# normalize_to_range(c(2,3,4),
-#                    1, 100,
-#                    1,1000)
 
 rename_based_on_codebook <- Vectorize(function(input,codebook,rawvar,codevar){
   #make sure there is only one coded entry in rawvar for input
