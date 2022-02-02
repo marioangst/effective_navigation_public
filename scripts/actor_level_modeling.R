@@ -21,10 +21,6 @@ modeling_df <- read.csv(here("data/modeling_df.csv"))
 
 # modeling
 
-# an appropriate distribution assumption for the response (achievement and ego inclusion 3/4 ordered categories)
-# is the ordered logit with 6 categories (rethinking 385)
-# also: https://bookdown.org/content/4857/monsters-and-mixtures.html#ordered-categorical-outcomes
-
 inspect_na(modeling_df) %>% show_plot()
 inspect_num(modeling_df) %>% show_plot()
 
